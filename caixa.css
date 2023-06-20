@@ -1,0 +1,208 @@
+#title,#title1, #register {
+  margin-bottom: 70px;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: xx-large;
+    color: #000000;
+    border: 1px solid #ffffff;
+}
+
+#name {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+    font-family:'Verdana, Geneva, Tahoma, sans-serif';
+    font-size: medium;
+    background-color: rgba(34, 110, 250, 0.37);
+    color: #000000;
+    margin-top: 12%;
+}
+
+#but {
+    text-shadow: 2px 2px 4px #000000;
+    position: absolute;
+    right: 46.5%;
+    left: 46.5%;
+    text-align: center;
+    width: 100px;
+    background-color: rgba(34, 110, 250, 0.37);
+    cursor:pointer;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ffffff;
+    border: 5px rgb(255, 255, 255) double;
+}
+
+#but:hover {
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
+}
+
+  #produtos,#venda,#confirm {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    margin-left: 1px;
+    background-color: rgba(0, 0, 255, 0.945);
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  #produtos:hover {
+    background-color: rgba(0, 0, 255, 0.527);
+    color: #ffffff;
+  }
+
+  #venda:hover {
+    background-color: rgba(0, 0, 255, 0.527);
+    color: #ffffff;
+  }
+
+  #confirm:hover {
+    background-color: rgba(0, 0, 255, 0.527);
+    color: #ffffff;
+  }
+
+  #nome, #qtde, #codigoBarras {
+    text-align: center;
+    font-size: larger;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    width: 400px;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    text-align: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    text-align: center;
+  }
+  
+  #modal-nome {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    text-align: center;
+  }
+
+  #modal-senha {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    text-align: center;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+/* Estilo da tabela */
+/* Estilo da tabela */
+#vendas {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: x-large;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  
+}
+
+#body2 {
+  background-color: hsla(93, 90%, 81%, 0.98);
+}
+
+#vendas th,
+#vendas td {
+  padding: 8px;
+  text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#vendas th {
+  text-align: center;
+  background-color: #f2f2f2;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Estilo das linhas horizontais */
+#data tr,
+#vendas tr {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Estilo das linhas verticais */
+
+#vendas {
+  border-right: 1px solid #ddd;
+}
+
+/* Estilo das últimas células das linhas */
+
+#vendas td:last-child {
+  border-right: none;
+}
+
+#saleInfo {
+  display: none;
+}
+
+#body2 {
+  background: linear-gradient(to bottom, #cccccc, #336699);
+}

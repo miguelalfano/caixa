@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exibir dados da API</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.css"
+    />
+    <link rel="stylesheet" href="produtos.css" />
+  </head>
+  <body id="body2">
+    <h1 id="title">Produtos</h1>
+
+    <table id="data">
+      <thead>
+        <tr>
+          <th>Código de Barras</th>
+          <th>Nome</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <button onclick="voltar()" id="back">Voltar</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.js"></script>
+    <script src="caixa.js"></script>
+
+    <script>
+      document.querySelector("#data_info").style.display = "none";
+      window.document.onload = function (e) {
+        let user = JSON.parse(localStorage.getItem("user"));
+
+        //null 0 undefined ''
+        if (!user) {
+          window.location.href = "login.html";
+          alert("Sai daqui hacker de merda!");
+        }
+      };
+    </script>
+  </body>
+</html>

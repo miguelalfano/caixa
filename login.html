@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+
+    <script src="caixa.js"></script>
+    <title>Abertura de caixa</title>
+  </head>
+  <body id="bodyopen">
+    <h1 id="title1">Bem vindo ao caixa</h1>
+    <label for="nome" class="meu-label">Nome:</label>
+    <input type="text" id="nome" class="meu-input" name="nome" required />
+
+    <!--
+    <br />
+    <label for="senha" id="label-senha">Senha:</label>
+    <input
+      type="password"
+      id="senha"
+      name="senha"
+      required
+      onfocusin="(this.type='text')"
+      onfocusout="(this.type='password')"
+    />
+    -->
+
+    <label for="modal-senha" class="meu-label">senha:</label>
+
+    <input type="password" id="senha" name="senha" class="meu-input" required />
+    <!-- <i class="fa-solid fa-eye" id="eye" onclick="eyeOnClick()"></i> -->
+
+    <button onclick="mostrarOcultarSenha()" id="show">
+      Mostrar/Ocultar Senha
+    </button>
+
+    <div id="buts">
+      <button onclick="verificarUsuario()" id="but1">Entrar</button><br />
+    </div>
+    <div id="buts2">
+      <button onclick="openModal('modalCadastrarUsuario')" id="but2">
+        Cadastrar</button
+      ><br />
+    </div>
+
+    <br />
+
+    <h5
+      style="
+        font-size: 3px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+      "
+    >
+      A única forma de eu impedir você de acessar outra página é estudando 35
+      anos de Javascript, ser o pai <br />do Chat GPT, dar 5 mortais de costas,
+      tomar um sorvete sabor pilha, ensinar um Hipopótamo a dançar salsa,
+      <br />impedir o 11 de setembro , tomar 73,42 guaraná Jesus e também
+      preciso achar a arca da aliança <br />
+      E convenhamos, estou bem longe de tudo isso. Então seja bacana e não mude
+      a URL
+    </h5>
+
+    <!-- Modal -->
+    <div id="modalCadastrarUsuario" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalCadastrarUsuario')"
+          >&times;</span
+        >
+        <h2>Cadastrar Usuario</h2>
+        <label for="modal-nome">Nome:</label>
+        <input type="text" id="modal-nome" name="modal-nome" required />
+        <br />
+        <label for="modal-senha">senha:</label>
+        <input type="text" id="modal-senha" name="modal-senha" required />
+
+        <br />
+
+        <button
+          onclick="adicionarUsuario(); closeModal('modalCadastrarUsuario');"
+          id="butmod1"
+        >
+          Cadastrar
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

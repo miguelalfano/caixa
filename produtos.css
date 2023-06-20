@@ -1,0 +1,78 @@
+#body2 {
+    background: linear-gradient(to bottom, #cccccc, #336699);
+  }
+  #title {
+    margin-bottom: 70px;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: xx-large;
+    color: #000000;
+    border: 1px solid #ffffff;
+}
+
+#data {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: x-large;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    
+  }
+
+  #data th,
+  #data td {
+    padding: 8px;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  #data th {
+    text-align: center;
+    background-color: #f2f2f2;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  /* Estilo das linhas horizontais */
+  #data tr {
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  /* Estilo das linhas verticais */
+  #data {
+    border-right: 1px solid #ddd;
+  }
+  
+  /* Estilo das últimas células das linhas */
+  #data td:last-child {
+    border-right: none;
+  }
+
+  div.dataTables_wrapper div.dataTables_filter {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: x-large;
+    font-family:'Verdana, Geneva, Tahoma, sans-serif';
+    background-color: #ffffff;
+  }
+
+  
+#tbody {
+    font-size: x-large;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  #back {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    margin-left: 1px;
+    background-color: rgba(0, 0, 255, 0.945);
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  #back:hover {
+    background-color: rgba(0, 0, 255, 0.527);
+    color: #ffffff;
+  }

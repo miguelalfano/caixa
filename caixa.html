@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="caixa.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.css"
+    />
+    <script src="caixa.js"></script>
+    <title>Caixa</title>
+  </head>
+  <body id="body2">
+    <button onclick="produtos()" id="produtos">Lista de produtos</button> <br />
+    <button onclick="openModal('modalRegistrarVenda')" id="venda">
+      Registrar Venda
+    </button>
+    <br />
+    <button onclick="bye()" id="confirm">Sair</button>
+
+    <div id="modalRegistrarVenda" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalRegistrarVenda')"
+          >&times;</span
+        >
+        <h2>Registrar Venda</h2>
+        <label for="codigoBarras">Código de Barras:</label>
+        <select id="codigoBarras"></select
+        ><br />
+        <br /><label for="nome">Nome:</label>
+        <select id="nome"></select
+        ><br />
+        <br /><label for="qtde">Quantidade:</label><br />
+        <input type="number" id="qtde" />
+        <br /><br />
+        <button onclick="registrarVenda()" id="confirm">Registrar</button>
+      </div>
+    </div>
+
+    <h2 id="register">Vendas Registradas</h2>
+    <table id="vendas">
+      <thead>
+        <tr>
+          <th>Código de Barras</th>
+          <th>Nome</th>
+          <th>Quantidade</th>
+          <th>Número da venda</th>
+        </tr>
+      </thead>
+      <tbody id="vendas"></tbody>
+    </table>
+
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function (event) {
+        console.log("teste");
+        let user = JSON.parse(localStorage.getItem("user"));
+
+        //null 0 undefined ''
+        if (!user) {
+          window.location.href = "login.html";
+        }
+      });
+    </script>
+
+    <script src="caixa.js"></script>
+    <script src="https://pcd1-7b97c-default-rtdb.firebaseio.com/"></script>
+    <script src="https://vendas-6437d-default-rtdb.firebaseio.com/.json"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.js"></script>
+  </body>
+</html>
