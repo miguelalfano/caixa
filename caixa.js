@@ -1,52 +1,23 @@
-// BOTÕES PARA NAVEGAÇÃO
-function voltar() {
-  // Redirecionar para a outra página
-  window.location.href = "caixa.html";
-}
-
 function produtos() {
-  // Redirecionar para a outra página
   window.location.href = "produtos.html";
 }
 
-/*Input password */
-
-function eyeOnClick() {
-  const passwordInput = document.querySelector("#senha");
-
-  const type =
-    passwordInput.getAttribute("type") === "password" ? "text" : "password";
-  console.log(type);
-  passwordInput.setAttribute("type", type);
-}
-
 function bye() {
-  // Redirecionar para a outra página
   localStorage.removeItem("user");
   window.location.href = "login.html";
 }
 
-function mostrarOcultarSenha() {
-  var senhaInput = document.getElementById("senha");
-  var tipoAtual = senhaInput.getAttribute("type");
 
-  if (tipoAtual === "password") {
-    senhaInput.setAttribute("type", "text");
-  } else {
-    senhaInput.setAttribute("type", "password");
-  }
-}
 
-//MODAIS
 
-// Função para abrir o modal
+
+
 function openModal(nomeModal) {
   var myModal = document.getElementById(nomeModal);
   myModal.style.display = "block";
   myModal.classList.add("fade-in");
 }
 
-// Função para fechar o modal
 function closeModal(nomeModal) {
   var myModal = document.getElementById(nomeModal);
   myModal.classList.remove("fade-in");
@@ -57,9 +28,11 @@ function closeModal(nomeModal) {
   }, 500);
 }
 
-//SELECT
 
-// Função para preencher as opções do select de código de barras e nome
+
+
+
+
 function preencherOpcoes() {
   var codigoBarrasSelect = document.getElementById("codigoBarras");
   var nomeSelect = document.getElementById("nome");
@@ -105,7 +78,11 @@ function preencherOpcoes() {
     });
 }
 
-// Função para registrar a venda
+
+
+
+
+
 function registrarVenda() {
   var codigoBarrasSelect = document.getElementById("codigoBarras");
   var nomeSelect = document.getElementById("nome");
@@ -166,7 +143,7 @@ function registrarVenda() {
             );
 
             // Fechar o modal após a venda ser registrada
-            closeModal("myModal");
+            ("myModal");
           })
           .catch((error) => {
             console.error("Ocorreu um erro ao atualizar a quantidade:", error);
@@ -182,7 +159,11 @@ function registrarVenda() {
     });
 }
 
-// Função para criar um novo registro de venda no banco de dados
+
+
+
+
+
 function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
   fetch("https://vendas-6437d-default-rtdb.firebaseio.com/.json")
     .then((response) => response.json())
@@ -224,7 +205,11 @@ function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
     });
 }
 
-// Função para adicionar uma venda na tabela
+
+
+
+
+
 function adicionarVenda(codigoBarras, nome, qtdeVenda, numVenda) {
   var tableBody = document.querySelector("#vendas tbody");
 
@@ -247,7 +232,11 @@ function adicionarVenda(codigoBarras, nome, qtdeVenda, numVenda) {
   tableBody.appendChild(row);
 }
 
-// Função para exibir as vendas registradas
+
+
+
+
+
 function exibirVendas() {
   var tableBody = document.querySelector("#vendas tbody");
 
@@ -291,110 +280,3 @@ function exibirVendas() {
 // Executar as funções de inicialização
 preencherOpcoes();
 exibirVendas();
-
-//TABELA DA ÁREA PROTUDOS
-
-// Recuperar dados da API
-fetch("https://pcd1-7b97c-default-rtdb.firebaseio.com/data/.json")
-  .then((response) => response.json())
-  .then((data) => {
-    // Manipular os dados recebidos
-    const tableBody = document.querySelector("#data tbody");
-
-    for (const key in data) {
-      if (Object.hasOwnProperty.call(data, key)) {
-        const item = data[key];
-
-        const row = document.createElement("tr");
-        const barcodeCell = document.createElement("td");
-        const nameCell = document.createElement("td");
-        const quantityCell = document.createElement("td");
-
-        barcodeCell.textContent = item.codigoBarras;
-        nameCell.textContent = item.nome;
-        quantityCell.textContent = item.qtde;
-
-        row.appendChild(barcodeCell);
-        row.appendChild(nameCell);
-        row.appendChild(quantityCell);
-
-        tableBody.appendChild(row);
-      }
-    }
-
-    // Inicializar o DataTable
-    $(document).ready(function () {
-      $("#data").DataTable();
-    });
-  })
-  .catch((error) => {
-    console.error("Ocorreu um erro:", error);
-  });
-
-// VERIFICANDO USUÁRIOS
-
-function verificarUsuario() {
-  var nome = document.getElementById("nome").value;
-  var senha = document.getElementById("senha").value;
-
-  console.log(nome, senha);
-
-  if (nome === "" || senha === "") {
-    alert("Por favor, preencha todos os campos.");
-    return;
-  }
-
-  // Verifica se o usuário existe no banco de dados
-  fetch("https://users-992a2-default-rtdb.firebaseio.com/users.json")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-
-      const usuarios = Object.values(data);
-      const usuarioExistente = usuarios.find(
-        (usuario) => usuario.nome === nome && usuario.senha === senha
-      );
-
-      if (usuarioExistente) {
-        // Redireciona para outra aba em HTML
-
-        delete usuarioExistente.senha;
-        localStorage.setItem("user", usuarioExistente);
-        window.location.href = "caixa.html";
-      } else {
-        alert("Este usuário não existe");
-        // Limpa os campos de nome e senha
-        document.getElementById("nome").value = "";
-        document.getElementById("senha").value = "";
-      }
-    })
-    .catch((error) => {
-      console.error("Ocorreu um erro ao verificar o banco de dados:", error);
-      alert("Este usuário não existe");
-    });
-}
-
-function adicionarUsuario() {
-  var nome = document.getElementById("modal-nome").value;
-  var senha = document.getElementById("modal-senha").value;
-
-  // Cadastra o usuário no banco de dados
-  fetch("https://users-992a2-default-rtdb.firebaseio.com/users.json", {
-    method: "POST",
-    body: JSON.stringify({ nome: nome, senha: senha }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Registro de usuário criado com sucesso:", data);
-      alert("Usuário cadastrado com sucesso!");
-      fecharModal();
-      document.getElementById("nome").value = "";
-      document.getElementById("senha").value = "";
-    })
-    .catch((error) => {
-      console.error("Ocorreu um erro ao criar o usuário:", error);
-    });
-}

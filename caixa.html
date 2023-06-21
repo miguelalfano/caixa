@@ -1,4 +1,4 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,7 +10,7 @@ a<!DOCTYPE html>
       href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.css"
     />
     <script src="caixa.js"></script>
-    <title>Caixaaa</title>
+    <title>Caixa</title>
   </head>
   <body id="body2">
     <button onclick="produtos()" id="produtos">Lista de produtos</button> <br />
@@ -22,9 +22,7 @@ a<!DOCTYPE html>
 
     <div id="modalRegistrarVenda" class="modal">
       <div class="modal-content">
-        <span class="close" onclick="closeModal('modalRegistrarVenda')"
-          >&times;</span
-        >
+        <span class="close" onclick="closeModal('modalRegistrarVenda')">&times;</span> 
         <h2>Registrar Venda</h2>
         <label for="codigoBarras">Código de Barras:</label>
         <select id="codigoBarras"></select
@@ -35,7 +33,7 @@ a<!DOCTYPE html>
         <br /><label for="qtde">Quantidade:</label><br />
         <input type="number" id="qtde" />
         <br /><br />
-        <button onclick="registrarVenda()" id="confirm">Registrar</button>
+        <button onclick="registrarVenda(); closeModal('modalRegistrarVenda')" id="confirm">Registrar</button>
       </div>
     </div>
 

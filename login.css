@@ -4,7 +4,8 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: xx-large;
   color: #000000;
-  border: 1px solid #ffffff;
+  border: 1px solid #000000;
+  background-color: #ffffff;
 }
 
 .meu-label {
@@ -15,18 +16,20 @@
 }
 
 .meu-input {
-  font-family: "Roboto", sans-serif;
-  color: #333;
-  font-size: 1.2rem;
+  color: #000000;
   margin: 0 auto;
   padding: 1rem 1rem;
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
   border: none;
-  width: 30%;
+  width: 20%;
   display: block;
   border-bottom: 0.3rem solid transparent;
   transition: all 0.3s;
+
+  text-align: center;
+  font-size: large;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #bodyopen {
@@ -180,4 +183,18 @@
   background-color: rgba(0, 0, 255, 0.945);
   color: #ffffff;
   cursor: pointer;
+}
+
+.fa-eye,
+.fa-eye-slash {
+  position: relative;
+  top: -35px; /* Ajuste essa propriedade conforme necessário */
+  left: 130px;
+}
+.fa-eye::before {
+  content: "\f06e"; /* Ícone do olho aberto */
+}
+
+.fa-eye-slash::before {
+  content: "\f070"; /* Ícone do olho fechado */
 }
