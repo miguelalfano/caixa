@@ -4,13 +4,8 @@ function produtos() {
 
 function bye() {
   localStorage.removeItem("user");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
-
-
-
-
-
 
 function openModal(nomeModal) {
   var myModal = document.getElementById(nomeModal);
@@ -27,11 +22,6 @@ function closeModal(nomeModal) {
     myModal.classList.remove("fade-out");
   }, 500);
 }
-
-
-
-
-
 
 function preencherOpcoes() {
   var codigoBarrasSelect = document.getElementById("codigoBarras");
@@ -77,11 +67,6 @@ function preencherOpcoes() {
       console.error("Ocorreu um erro:", error);
     });
 }
-
-
-
-
-
 
 function registrarVenda() {
   var codigoBarrasSelect = document.getElementById("codigoBarras");
@@ -159,11 +144,6 @@ function registrarVenda() {
     });
 }
 
-
-
-
-
-
 function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
   fetch("https://vendas-6437d-default-rtdb.firebaseio.com/.json")
     .then((response) => response.json())
@@ -205,11 +185,6 @@ function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
     });
 }
 
-
-
-
-
-
 function adicionarVenda(codigoBarras, nome, qtdeVenda, numVenda) {
   var tableBody = document.querySelector("#vendas tbody");
 
@@ -231,11 +206,6 @@ function adicionarVenda(codigoBarras, nome, qtdeVenda, numVenda) {
 
   tableBody.appendChild(row);
 }
-
-
-
-
-
 
 function exibirVendas() {
   var tableBody = document.querySelector("#vendas tbody");
