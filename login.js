@@ -19,14 +19,38 @@ function closeModal(nomeModal) {
 }
 
 // VERIFICANDO USUÁRIOS
-function adicionarUsuario() {
+// Função para obter o próximo ID disponível
+function obterProximoId() {
+    // Consulta o banco de dados para verificar se há registros
+    fetch("https://users-992a2-default-rtdb.firebaseio.com/users.json")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data === null) {
+          // Se o banco estiver vazio, reinicia a contagem
+          ultimoId = 0;
+        } else {
+          // Se houver registros, encontra o maior ID existente
+          var ids = Object.keys(data);
+          var maxId = Math.max(...ids);
+          ultimoId = maxId;
+        }
+      })
+      .catch((error) => {
+        console.error("Ocorreu um erro ao obter o próximo ID:", error);
+      });
+  }
+  
+  function adicionarUsuario() {
     var nome = document.getElementById("modal-nome").value;
     var senha = document.getElementById("modal-senha").value;
+    
+    // Incrementa o ID
+    ultimoId++;
   
-    // Cadastra o usuário no banco de dados
+    // Cadastra o usuário no banco de dados com o novo ID
     fetch("https://users-992a2-default-rtdb.firebaseio.com/users.json", {
       method: "POST",
-      body: JSON.stringify({ nome: nome, senha: senha }),
+      body: JSON.stringify({ id: ultimoId, nome: nome, senha: senha }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -36,14 +60,17 @@ function adicionarUsuario() {
         console.log("Registro de usuário criado com sucesso:", data);
         alert("Usuário cadastrado com sucesso!");
         fecharModal();
-        document.getElementById("nome").value = "";
-        document.getElementById("senha").value = "";
+        document.getElementById("modal-nome").value = "";
+        document.getElementById("modal-senha").value = "";
       })
       .catch((error) => {
         console.error("Ocorreu um erro ao criar o usuário:", error);
       });
   }
   
+  // Chama a função para obter o próximo ID disponível
+  obterProximoId();
+   
 function verificarUsuario() {
   var nome = document.getElementById("nome").value;
   var senha = document.getElementById("senha").value;
