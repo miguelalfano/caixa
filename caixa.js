@@ -4,7 +4,7 @@ function produtos() {
 
 function bye() {
   localStorage.removeItem("user");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 

@@ -96,12 +96,19 @@ function mostrarOcultarSenha() {
   }
 }
 
-function eyeOnClick() {
-  const passwordInput = document.querySelector("#senha");
 
-  const type =
-    passwordInput.getAttribute("type") === "password" ? "text" : "password";
-  console.log(type);
-  passwordInput.setAttribute("type", type);
-}
+
+function eyeOnClick() {
+    var senhaInput = document.getElementById("senha");
+    var eyeIcon = document.getElementById("eye");
   
+    if (senhaInput.type === "password") {
+      senhaInput.type = "text";
+      eyeIcon.classList.remove("fa-eye");
+      eyeIcon.classList.add("fa-eye-slash");
+    } else {
+      senhaInput.type = "password";
+      eyeIcon.classList.remove("fa-eye-slash");
+      eyeIcon.classList.add("fa-eye");
+    }
+  }
