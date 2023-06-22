@@ -148,9 +148,10 @@ function registrarVenda() {
           .catch((error) => {
             console.error("Ocorreu um erro ao atualizar a quantidade:", error);
           });
-      } else {
+      } 
+      else {
         alert(
-          "Quantidade da venda é maior do que a quantidade atual do produto."
+          "A quantidade de sua venda é maior do que a quantidade atual do produto."
         );
       }
     })
@@ -163,9 +164,21 @@ function registrarVenda() {
 
 
 
+var meuInput = document.getElementById('qtde');
+
+meuInput.addEventListener('input', function() {
+  if (meuInput.value < 0) {
+    meuInput.value = '';
+  }
+});
+
+
+
+
+
 
 function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
-  fetch("https://vendas-6437d-default-rtdb.firebaseio.com/.json")
+  fetch("https://vendas-6437d-default-rtdb.firebaseio.com/vendas.json")
     .then((response) => response.json())
     .then((data) => {
       // Obter a quantidade existente do produto
