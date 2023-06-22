@@ -198,33 +198,3 @@
 .fa-eye-slash::before {
   content: "\f070"; /* Ícone do olho fechado */
 }
-
-@media screen and (min-width: 600px) {
-  .meu-input {
-    width: 20%;
-  }
-}
-
-/* Estilos para telas menores */
-@media screen and (max-width: 599px) {
-  #title1 {
-    font-size: large;
-    margin-bottom: 30px;
-  }
-
-  .meu-input {
-    width: 70%;
-  }
-
-  #butmod1,
-  #butmod2 {
-    margin-left: 0;
-    margin-top: 10px;
-  }
-
-  .fa-eye,
-  .fa-eye-slash {
-    top: -20px;
-    left: 90px;
-  }
-}
