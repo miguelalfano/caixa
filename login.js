@@ -20,57 +20,62 @@ function closeModal(nomeModal) {
 
 // VERIFICANDO USUÁRIOS
 // Função para obter o próximo ID disponível
-function obterProximoId() {
-    // Consulta o banco de dados para verificar se há registros
-    fetch("https://users-992a2-default-rtdb.firebaseio.com/users.json")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data === null) {
-          // Se o banco estiver vazio, reinicia a contagem
-          ultimoId = 0;
-        } else {
-          // Se houver registros, encontra o maior ID existente
-          var ids = Object.keys(data);
-          var maxId = Math.max(...ids);
-          ultimoId = maxId;
-        }
-      })
-      .catch((error) => {
-        console.error("Ocorreu um erro ao obter o próximo ID:", error);
-      });
+async function obterProximoId() {
+  // Consulta o banco de dados para verificar se há registros
+  let response = await fetch(
+    "https://users-992a2-default-rtdb.firebaseio.com/users.json"
+  );
+
+  let data = await response.json();
+
+  console.log(data);
+
+  if (data === null) {
+    // Se o banco estiver vazio, reinicia a contagem
+    return 0;
+  } else {
+    // Se houver registros, encontra o maior ID existente
+    var ids = Object.keys(data);
+
+    var ultimoHashFirebase = ids[ids.length - 1];
+
+    return data[ultimoHashFirebase].id;
   }
-  
-  function adicionarUsuario() {
-    var nome = document.getElementById("modal-nome").value;
-    var senha = document.getElementById("modal-senha").value;
-    
-    // Incrementa o ID
-    ultimoId++;
-  
-    // Cadastra o usuário no banco de dados com o novo ID
-    fetch("https://users-992a2-default-rtdb.firebaseio.com/users.json", {
-      method: "POST",
-      body: JSON.stringify({ id: ultimoId, nome: nome, senha: senha }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+}
+
+async function adicionarUsuario() {
+  var nome = document.getElementById("modal-nome").value;
+  var senha = document.getElementById("modal-senha").value;
+
+  // Incrementa o ID
+
+  let ultimoId = await obterProximoId();
+
+  console.log(ultimoId);
+
+  ultimoId++;
+
+  // Cadastra o usuário no banco de dados com o novo ID
+  fetch("https://users-992a2-default-rtdb.firebaseio.com/users.json", {
+    method: "POST",
+    body: JSON.stringify({ id: ultimoId, nome: nome, senha: senha }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Registro de usuário criado com sucesso:", data);
+      alert("Usuário cadastrado com sucesso!");
+      fecharModal();
+      document.getElementById("modal-nome").value = "";
+      document.getElementById("modal-senha").value = "";
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Registro de usuário criado com sucesso:", data);
-        alert("Usuário cadastrado com sucesso!");
-        fecharModal();
-        document.getElementById("modal-nome").value = "";
-        document.getElementById("modal-senha").value = "";
-      })
-      .catch((error) => {
-        console.error("Ocorreu um erro ao criar o usuário:", error);
-      });
-  }
-  
-  // Chama a função para obter o próximo ID disponível
-  obterProximoId();
-   
+    .catch((error) => {
+      console.error("Ocorreu um erro ao criar o usuário:", error);
+    });
+}
+
 function verificarUsuario() {
   var nome = document.getElementById("nome").value;
   var senha = document.getElementById("senha").value;
@@ -123,19 +128,17 @@ function mostrarOcultarSenha() {
   }
 }
 
-
-
 function eyeOnClick() {
-    var senhaInput = document.getElementById("senha");
-    var eyeIcon = document.getElementById("eye");
-  
-    if (senhaInput.type === "password") {
-      senhaInput.type = "text";
-      eyeIcon.classList.remove("fa-eye");
-      eyeIcon.classList.add("fa-eye-slash");
-    } else {
-      senhaInput.type = "password";
-      eyeIcon.classList.remove("fa-eye-slash");
-      eyeIcon.classList.add("fa-eye");
-    }
+  var senhaInput = document.getElementById("senha");
+  var eyeIcon = document.getElementById("eye");
+
+  if (senhaInput.type === "password") {
+    senhaInput.type = "text";
+    eyeIcon.classList.remove("fa-eye");
+    eyeIcon.classList.add("fa-eye-slash");
+  } else {
+    senhaInput.type = "password";
+    eyeIcon.classList.remove("fa-eye-slash");
+    eyeIcon.classList.add("fa-eye");
   }
+}
