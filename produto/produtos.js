@@ -34,7 +34,7 @@ fetch("https://pcd1-7b97c-default-rtdb.firebaseio.com/data/.json")
     console.error("Ocorreu um erro:", error);
   });
 
-  function voltar() {
-    // Redirecionar para a outra página
-    window.location.href = "caixa.html";
-  }
+function voltar() {
+  // Redirecionar para a outra página
+  window.location.href = "./../caixa/caixa.html";
+}

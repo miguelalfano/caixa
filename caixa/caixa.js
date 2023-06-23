@@ -1,37 +1,11 @@
 function produtos() {
-  window.location.href = "produtos.html";
+  window.location.href = "./../produto/produtos.html";
 }
 
 function bye() {
   localStorage.removeItem("user");
-  window.location.href = "index.html";
+  window.location.href = "./../index.html";
 }
-
-
-
-
-
-
-function openModal(nomeModal) {
-  var myModal = document.getElementById(nomeModal);
-  myModal.style.display = "block";
-  myModal.classList.add("fade-in");
-}
-
-function closeModal(nomeModal) {
-  var myModal = document.getElementById(nomeModal);
-  myModal.classList.remove("fade-in");
-  myModal.classList.add("fade-out");
-  setTimeout(function () {
-    myModal.style.display = "none";
-    myModal.classList.remove("fade-out");
-  }, 500);
-}
-
-
-
-
-
 
 function preencherOpcoes() {
   var codigoBarrasSelect = document.getElementById("codigoBarras");
@@ -77,11 +51,6 @@ function preencherOpcoes() {
       console.error("Ocorreu um erro:", error);
     });
 }
-
-
-
-
-
 
 function registrarVenda() {
   var codigoBarrasSelect = document.getElementById("codigoBarras");
@@ -148,8 +117,7 @@ function registrarVenda() {
           .catch((error) => {
             console.error("Ocorreu um erro ao atualizar a quantidade:", error);
           });
-      } 
-      else {
+      } else {
         alert(
           "A quantidade de sua venda é maior do que a quantidade atual do produto."
         );
@@ -160,22 +128,13 @@ function registrarVenda() {
     });
 }
 
+var meuInput = document.getElementById("qtde");
 
-
-
-
-var meuInput = document.getElementById('qtde');
-
-meuInput.addEventListener('input', function() {
+meuInput.addEventListener("input", function () {
   if (meuInput.value < 0) {
-    meuInput.value = '';
+    meuInput.value = "";
   }
 });
-
-
-
-
-
 
 function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
   fetch("https://vendas-6437d-default-rtdb.firebaseio.com/vendas.json")
@@ -218,11 +177,6 @@ function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
     });
 }
 
-
-
-
-
-
 function adicionarVenda(codigoBarras, nome, qtdeVenda, numVenda) {
   var tableBody = document.querySelector("#vendas tbody");
 
@@ -244,11 +198,6 @@ function adicionarVenda(codigoBarras, nome, qtdeVenda, numVenda) {
 
   tableBody.appendChild(row);
 }
-
-
-
-
-
 
 function exibirVendas() {
   var tableBody = document.querySelector("#vendas tbody");

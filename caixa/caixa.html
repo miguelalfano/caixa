@@ -9,7 +9,6 @@
       type="text/css"
       href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.css"
     />
-    <script src="caixa.js"></script>
     <title>Caixa</title>
   </head>
   <body id="body2">
@@ -33,7 +32,7 @@
         <select id="nome"></select
         ><br />
         <br /><label for="qtde">Quantidade:</label><br />
-        <input type="number" id="qtde"/>
+        <input type="number" id="qtde" />
         <br /><br />
         <button
           onclick="registrarVenda(); closeModal('modalRegistrarVenda')"
@@ -59,17 +58,19 @@
 
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", function (event) {
-        console.log("teste");
         let user = JSON.parse(localStorage.getItem("user"));
 
         //null 0 undefined ''
         if (!user) {
-          window.location.href = "index.html";
+          window.location.href = "./../index.html";
         }
       });
     </script>
 
+    <script src="./../firebase.js"></script>
     <script src="caixa.js"></script>
+    <script src="./../modal.js"></script>
+
     <script src="https://pcd1-7b97c-default-rtdb.firebaseio.com/"></script>
     <script src="https://vendas-6437d-default-rtdb.firebaseio.com/.json"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
