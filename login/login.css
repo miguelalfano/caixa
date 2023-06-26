@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 #title1 {
   margin-bottom: 70px;
   text-align: center;

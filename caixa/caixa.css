@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 #title,#title1, #register {
   margin-bottom: 70px;
     text-align: center;

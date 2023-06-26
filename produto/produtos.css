@@ -1,6 +1,12 @@
 #body2 {
     background: linear-gradient(to bottom, #cccccc, #336699);
   }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+}
+
   #title {
     margin-bottom: 70px;
     text-align: center;
