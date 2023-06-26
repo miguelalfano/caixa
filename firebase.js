@@ -59,4 +59,24 @@ class Firebase {
 
     return data;
   }
+
+
+  async adicionar(data) {
+    try {
+      let response = await fetch(
+        "https://pcd1-7b97c-default-rtdb.firebaseio.com/data.json",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      let responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      throw new Error("Erro ao adicionar produto no Firebase: " + error);
+    }
+  }
 }

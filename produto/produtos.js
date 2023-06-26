@@ -38,3 +38,29 @@ function voltar() {
   // Redirecionar para a outra página
   window.location.href = "./../caixa/caixa.html";
 }
+
+
+
+async function adicionarProduto() {
+  var codigoBarras = document.getElementById("modal-código-de-barras").value;
+  var nome = document.getElementById("modal-nome-produto").value;
+  var qtde = document.getElementById("modal-qtde-produto").value;
+
+  let produtoParaSerSalvo = {
+    codigoBarras: codigoBarras,
+    nome: nome,
+    qtde: qtde,
+  };
+
+  try {
+    let data = await new Firebase().adicionar(produtoParaSerSalvo);
+    console.log("Registro de produto criado com sucesso:", data);
+    alert("Produto cadastrado com sucesso!");
+    fecharModal();
+    document.getElementById("modal-código-de-barras").value = "";
+    document.getElementById("modal-nome-produto").value = "";
+    document.getElementById("modal-qtde-produto").value = "";
+  } catch (error) {
+    
+  }
+}
