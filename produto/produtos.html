@@ -34,17 +34,17 @@
         >
         <h2>Cadastrar Usuario</h2>
         <label for="modal-código-de-barras">Código de barras:</label>
-        <input type="number" id="modal-código-de-barras" name="modal-código-de-barras" required />
+        <input type="number" min="0" oninput="validity.valid||(value='');" id="modal-código-de-barras" name="modal-código-de-barras" required />
         <br />
         <label for="modal-nome-produto">Nome do produto:</label>
         <input type="text" id="modal-nome-produto" name="modal-nome-produto" required />
         <br />
         <label for="modal-qtde-produto">Quantidade:</label>
-        <input type="number" id="modal-qtde-produto" name="modal-qtde-produto" required />
+        <input type="number" min="0" oninput="validity.valid||(value='');" id="modal-qtde-produto" name="modal-qtde-produto" required />
         <br />
 
         <button
-          onclick="adicionarProduto(); closeModal('modalCadastrarProduto');"
+          onclick="adicionarProduto(); closeModal('modalCadastrarProduto'); abrirPaginaTemporaria();"
           id="butmod1"
         >
           Cadastrar
