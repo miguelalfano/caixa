@@ -137,6 +137,8 @@ meuInput.addEventListener("input", function () {
 });
 
 function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
+  var userId = localStorage.getItem("userId");
+
   fetch("https://vendas-6437d-default-rtdb.firebaseio.com/vendas.json")
     .then((response) => response.json())
     .then((data) => {
@@ -154,6 +156,7 @@ function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
         nome: nomeProduto,
         quantidade: novaQuantidade,
         numVenda: Math.floor(Math.random() * 1000) + 1,
+        userId: userId, // Adicionar o ID do usuário à venda
       };
 
       // Enviar a requisição POST para adicionar o registro de venda atualizado
@@ -177,6 +180,7 @@ function criarRegistroVenda(codigoBarras, nomeProduto, qtdeVenda) {
     });
 }
 
+
 function adicionarVenda(codigoBarras, nome, qtdeVenda, numVenda) {
   var tableBody = document.querySelector("#vendas tbody");
 
@@ -199,7 +203,7 @@ function adicionarVenda(codigoBarras, nome, qtdeVenda, numVenda) {
   tableBody.appendChild(row);
 }
 
-function exibirVendas() {
+function exibirVendas(userId) {
   var tableBody = document.querySelector("#vendas tbody");
 
   // Fazer a requisição para o Firebase e obter os dados das vendas
@@ -209,28 +213,31 @@ function exibirVendas() {
       // Limpar as vendas existentes
       tableBody.innerHTML = "";
 
-      // Adicionar as vendas na tabela
+      // Adicionar as vendas do usuário logado na tabela
       for (const key in data) {
         if (Object.hasOwnProperty.call(data, key)) {
           const venda = data[key];
 
-          var row = document.createElement("tr");
-          var codigoBarrasCell = document.createElement("td");
-          var nomeCell = document.createElement("td");
-          var qtdeCell = document.createElement("td");
-          var numCell = document.createElement("td");
+          // Verificar se a venda pertence ao usuário logado
+          if (venda.userId === userId) {
+            var row = document.createElement("tr");
+            var codigoBarrasCell = document.createElement("td");
+            var nomeCell = document.createElement("td");
+            var qtdeCell = document.createElement("td");
+            var numCell = document.createElement("td");
 
-          codigoBarrasCell.textContent = venda.codigoBarras;
-          nomeCell.textContent = venda.nome;
-          qtdeCell.textContent = venda.quantidade;
-          numCell.textContent = venda.numVenda;
+            codigoBarrasCell.textContent = venda.codigoBarras;
+            nomeCell.textContent = venda.nome;
+            qtdeCell.textContent = venda.quantidade;
+            numCell.textContent = venda.numVenda;
 
-          row.appendChild(codigoBarrasCell);
-          row.appendChild(nomeCell);
-          row.appendChild(qtdeCell);
-          row.appendChild(numCell);
+            row.appendChild(codigoBarrasCell);
+            row.appendChild(nomeCell);
+            row.appendChild(qtdeCell);
+            row.appendChild(numCell);
 
-          tableBody.appendChild(row);
+            tableBody.appendChild(row);
+          }
         }
       }
     })
@@ -239,6 +246,7 @@ function exibirVendas() {
     });
 }
 
+
 // Executar as funções de inicialização
 preencherOpcoes();
-exibirVendas();
+exibirVendas(userId);
