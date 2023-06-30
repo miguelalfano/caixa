@@ -44,19 +44,18 @@
         <br />
 
         <button
-          onclick="adicionarProduto(); closeModal('modalCadastrarProduto'); abrirPaginaTemporaria();"
+          onclick="adicionarProduto(); closeModal('modalCadastrarProduto');"
           id="butmod1"
         >
           Cadastrar
         </button>
       </div>
     </div>
-    <script src="./../modal.js"></script>
-    <script src="./../firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.js"></script>
-    <script src="produtos.js"></script>
-    
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.js"></script>   
+    <script src="./../modal.js"></script>
+    <script src="./../services/produto.service.js"></script>
+    <script src="./produto.controller.js"></script>    
 
     <script>
       document.querySelector("#data_info").style.display = "none";
