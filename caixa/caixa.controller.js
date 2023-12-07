@@ -181,7 +181,7 @@ async function exibirVendas() {
       const venda = vendas[key];
 
       // Verificar se a venda pertence ao usuário logado
-      if (venda.userId === userId) {
+      if (venda.userId === user.Id) {
         var row = document.createElement("tr");
         var codigoBarrasCell = document.createElement("td");
         var nomeCell = document.createElement("td");
